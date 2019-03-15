@@ -7,14 +7,15 @@
 #include "PatrollingGuard.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class APatrollingGuard : public ATP_ThirdPersonCharacter
 {
 	GENERATED_BODY()
 
-		UPROPERTY(EditInstanceOnly, Category = "Patrol Route")
+public: // TODO remove or create Get
+	UPROPERTY(EditInstanceOnly, Category = "Patrol Route")
 		TArray<AActor*> PatrolPointsCPP;
-	
+
 };
