@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "FirstPersonCharacter.generated.h"
 
+class AGun; 
 class UInputComponent;
 
 UCLASS(config=Game)
@@ -40,6 +41,12 @@ public:
 	// TODO Delete or move GunOffset to the Gun class (if needed)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Gameplay)
 	FVector GunOffset;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		TSubclassOf<AGun> GunBlueprint;
+
+private:
+	AGun* Gun;
 
 protected:
 
