@@ -44,7 +44,7 @@ public:
 
 
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
-		void Fire();
+		void PullTrigger();
 
 
 private:

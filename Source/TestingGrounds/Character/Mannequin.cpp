@@ -3,6 +3,7 @@
 #include "Mannequin.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/InputComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "../Weapons/Gun.h"
 
@@ -22,7 +23,7 @@ AMannequin::AMannequin()
 	// Create a CameraComponent	
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	FirstPersonCameraComponent->SetupAttachment(GetCapsuleComponent());
-	FirstPersonCameraComponent->RelativeLocation = FVector(-39.56f, 1.75f, 64.f); // Position the camera
+	FirstPersonCameraComponent->RelativeLocation = FVector(-17.5f, -9.25f, 60.f); // Position the camera
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
 
 	// Create a mesh component that will be used when being viewed from a '1st person' view (when controlling this pawn)
@@ -56,6 +57,8 @@ void AMannequin::BeginPlay()
 
 	// Set Gun's AnimInstance to the same AnimInstance as defined in the Mesh1P
 	Gun->AnimInstance = Mesh1P->GetAnimInstance();
+
+	if (InputComponent != NULL) InputComponent->BindAction("Fire", IE_Pressed, this, &AMannequin::PullTrigger);
 	
 }
 
@@ -73,7 +76,7 @@ void AMannequin::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 
 }
 
-void AMannequin::Fire()
+void AMannequin::PullTrigger()
 {
 	Gun->OnFire();
 }
