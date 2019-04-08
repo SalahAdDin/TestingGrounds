@@ -23,6 +23,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 public:	
 	// Called every frame
@@ -33,6 +34,8 @@ public:
 
 private:
 
+	void PositionNavMeshBoundsVolume();
+
 	bool FindEmptyLocation(FVector& OutLocation, float Radius);
 
 	void PlaceActor(TSubclassOf<AActor> ToSpawn, FVector SpawnPoint, float Rotation, float Scale);
@@ -40,5 +43,7 @@ private:
 	bool CanSpawnAtLocation(FVector Location, float Radius);
 
 	UActorPool* Pool;
+
+	AActor* NavMeshBoundsVolume;
 
 };
