@@ -20,7 +20,7 @@ void AInfiniteTerrainGameMode::PopulateBoundsVolumePool()
 	}
 }
 
-void AInfiniteTerrainGameMode::AddToPool(ANavMeshBoundsVolume * VolumeToAdd)
+void AInfiniteTerrainGameMode::AddToPool(ANavMeshBoundsVolume *VolumeToAdd)
 {
 	NavMeshBoundsVolumePool->Add(VolumeToAdd);
 }
